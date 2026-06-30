@@ -1,0 +1,9 @@
+{
+    "manifest_version":3,
+    "name":"LeetTrack",
+    "version":"0.0.1",
+    "description":"Track your LeetCode Progress.",
+    "action":{
+       "default_popup": "popup/popup.html"
+    }
+}

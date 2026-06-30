@@ -1,0 +1,12 @@
+h1{
+    text-align: center;
+    width: auto;
+}
+button{
+    background-color: blue;
+    color: white;
+    width: 120px;
+}
+p{
+    text-align: center;
+}
