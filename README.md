@@ -1,10 +1,10 @@
-# LeetTrack
+# PatternPilot
 
 > Your Personal DSA Learning Coach.
 
-LeetTrack is a Chrome Extension designed to help programmers improve their problem-solving skills rather than simply tracking solved problems.
+PatternPilot is a Chrome Extension designed to help programmers improve their problem-solving skills rather than simply tracking solved problems.
 
-Unlike LeetCode's built-in statistics, LeetTrack focuses on knowledge retention, confidence tracking, revision scheduling, and learning analytics.
+Unlike LeetCode's built-in statistics, PatternPilot focuses on knowledge retention, confidence tracking, revision scheduling, and learning analytics.
 
 ---
 
@@ -23,7 +23,7 @@ They do **not** tell you:
 - Your confidence in each pattern
 - Which interview patterns are becoming weak
 
-LeetTrack aims to solve that.
+PatternPilot aims to solve that.
 
 ---
 
@@ -96,6 +96,6 @@ Future
 
 ## Vision
 
-LeetTrack does not measure **how many** problems you've solved.
+PatternPilot does not measure **how many** problems you've solved.
 
 It measures **how well you've learned them.**

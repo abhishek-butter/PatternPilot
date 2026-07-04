@@ -1,6 +1,6 @@
 {
     "manifest_version":3,
-    "name":"LeetTrack",
+    "name":"PatternPilot",
     "version":"0.0.1",
     "description":"Track your LeetCode Progress.",
     "action":{
