@@ -6,4 +6,12 @@
     "action":{
        "default_popup": "popup/popup.html"
     }
+    "content_scripts":[
+        {
+            "matches":[
+                "https://leetcode.com/problems/*"
+            ],
+            "js":["../content/content.js"]
+        }
+    ]
 }

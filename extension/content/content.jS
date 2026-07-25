@@ -1,4 +1,2 @@
-const url=window.location;
-url.addEventListener("change",()=>{
-    "wakeup service worker"
-})
+
+    console.log("Lettcode Problem Page Detected->wakeup service worker")
