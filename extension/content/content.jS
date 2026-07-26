@@ -1,11 +1,18 @@
 if(window.location.href.includes("/problems/")){
-    console.log("Problem Page Detected")
-}
-    console.log("Lettcode Problem Page Detected->wakeup service worker")
-const title=document.querySelector("div.text-title-large");
-console.log(title.innerText);
+    console.log("Problem Page Detected");
 
-//defensive programing for null check
-if(title){
-    console.log(title.textContent);
+    const title=document.querySelector("div.text-title-large");
+
+    const difficulty=
+    document.querySelector(".text-difficulty-easy")||
+    document.querySelector(".text-difficulty-medium")||
+    document.querySelector(".text-difficulty-hard");
+
+    if(title && difficulty){
+    console.log("Title: ",title.innerText );
+    console.log("Difficulty: ",difficulty.innerText)
+    }
 }
+
+
+
