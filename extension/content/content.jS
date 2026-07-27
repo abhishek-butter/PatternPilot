@@ -1,3 +1,5 @@
+import Problem.js
+
 if(window.location.href.includes("/problems/")){
     console.log("Problem Page Detected");
 
@@ -7,13 +9,16 @@ if(window.location.href.includes("/problems/")){
     document.querySelector(".text-difficulty-easy")||
     document.querySelector(".text-difficulty-medium")||
     document.querySelector(".text-difficulty-hard");
-
+    let p=null;
     if(title && difficulty){
-    console.log("Title: ",title.innerText );
-    console.log("Difficulty: ",difficulty.innerText)
+        const  p = new Problem(title.innerText, difficulty.innerText, window.location.href);
 
+        console.log("Title: ", p.getTitle() );
+        console.log("Difficulty: ",p.getDifficulty())
     }
-    console.log("URL: ",window.location.href);
+
+
+    console.log("URL: ",p.getUrl());
 }
 
 

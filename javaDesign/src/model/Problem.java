@@ -1,6 +1,8 @@
 package model;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -10,12 +12,13 @@ public class Problem {
     private String Title;
     private String Difficulty;
     private String Url;
-    private Submissions submissions;
+    private List<Submission> submissions;
 
     public Problem(String title, String difficulty, String url) {
         Title = title;
         Difficulty = difficulty;
         Url = url;
+        submissions = new ArrayList<>();
     }
 
     public String getTitle() {
@@ -42,11 +45,11 @@ public class Problem {
         Url = url;
     }
 
-    public Submissions getSubmissions() {
+    public List<Submission> getSubmission() {
         return submissions;
     }
 
-    public void setSubmissions(LocalDateTime date) {
-        submissions.setDates(date);
+    public void setSubmission(LocalDateTime date,String language,String verdict) {
+        submissions.add(new Submission(date, language, verdict));
     }
 }
