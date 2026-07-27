@@ -11,7 +11,9 @@ if(window.location.href.includes("/problems/")){
     if(title && difficulty){
     console.log("Title: ",title.innerText );
     console.log("Difficulty: ",difficulty.innerText)
+
     }
+    console.log("URL: ",window.location.href);
 }
 
 
