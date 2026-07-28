@@ -3,6 +3,7 @@
     "name":"PatternPilot",
     "version":"0.0.1",
     "description":"Track your DSA Progress.",
+    "permissions" : ["storage"],
     "action":{
        "default_popup": "popup/popup.html"
     },
