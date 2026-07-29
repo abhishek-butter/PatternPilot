@@ -12,7 +12,12 @@
             "matches":[
                 "https://leetcode.com/problems/*"
             ],
-            "js":["content/content.js"]
+            "js":[
+                "models/Submission.js",
+                "models/Problem.js",
+                "Storage/PatternPilotStorage.js",
+                "content/content.js"]
+
         }
     ]
 }

@@ -1,4 +1,4 @@
-class StorageManager {
+class PatternPilotStorage {
         saveProblem(problem){
             chrome.storage.local.set({[problem.getUrl()]: problem},
             function() {

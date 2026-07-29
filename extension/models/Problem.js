@@ -15,14 +15,14 @@ class Problem{
         setTitle(title) {
             this.title = title;
         }
-        createSubmission(date,language,verdict)(){
+        createSubmission(date,language,verdict){
                     const submission=new Submission(date,language,verdict);
-                    return this.submission;
+                    return submission;
 
 
         }
         addSubmission(submission) {
-        this.submissions.push(submission;)
+        this.submissions.push(submission);
 
         }
         getUrl(){
