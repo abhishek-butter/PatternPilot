@@ -36,19 +36,19 @@ const observer = new MutationObserver(function(mutations){
                         const runtime =getStat("Runtime");
                         const memory=getStat("Memory");
 
-                        if(submissionStatus && runtime && memory && runtime !== "0 ms" && memory !== "0 MB"){
+                        if(submissionStatus && runtime && memory ){
                         const parts=window.location.href.split('/');
                         parts.pop();
                         const sid=parts.pop()
                         parts.pop();
 
                         const keyurl=parts.join('/')+"/description/";
-                        let p;
+
                          storage.getProblem(keyurl,function(problem){
 
 
-                             Problem.createSubmission(sid,  submissionStatus.innerText , runtime,memory,new Date(), "JavaScript");
-                             storage.saveProblem(keyurl, p);
+                             problem.addSubmission(new Submission(sid,  submissionStatus.innerText , runtime,memory,new Date(), "JavaScript"));
+                             storage.saveProblem(problem);
                          });
 
 

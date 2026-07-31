@@ -12,10 +12,7 @@ class Problem{
         setTitle(title) {
             this.title = title;
         }
-        createSubmission(sid,verdict,runtime,memory,date,language){
-                    const submission=new Submission(sid,verdict,runtime,memory,date,language);
-                     this.addSubmission(submission);
-        }
+
         addSubmission(submission) {
         let check=false;
         for(let i of this.submissions){
@@ -37,9 +34,10 @@ class Problem{
             const p=new Problem(json.title,
             json.difficulty,
             json.url,
-            )
-            for(let i of json.submissions){
-                p.addSubmission(Submission.fromJson(i));
+            );
+
+            for(const submission of (json.submissions || [] )){
+                p.addSubmission(Submission.fromJson(submission));
             }
 
             return p;
