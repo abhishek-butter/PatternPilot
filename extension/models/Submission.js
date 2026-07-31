@@ -33,7 +33,7 @@ class Submission {
         rawSubmission.verdict,
         rawSubmission.runtime,
         rawSubmission.memory,
-        rawSubmission.date,
+        new Date(rawSubmission.date),
         rawSubmission.language,
         );
         return s;

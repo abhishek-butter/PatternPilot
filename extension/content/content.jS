@@ -45,10 +45,13 @@ const observer = new MutationObserver(function(mutations){
                         const keyurl=parts.join('/')+"/description/";
 
                          storage.getProblem(keyurl,function(problem){
-
-
-                             problem.addSubmission(new Submission(sid,  submissionStatus.innerText , runtime,memory,new Date(), "JavaScript"));
-                             storage.saveProblem(problem);
+                             if(problem){
+                                 problem.addSubmission(new Submission(sid,  submissionStatus.innerText , runtime,memory,new Date(), "JavaScript"));
+                                 storage.saveProblem(problem);
+                             }
+                             else {
+                                 console.log("Problem not found for URL:", keyurl);
+                             }
                          });
 
 
