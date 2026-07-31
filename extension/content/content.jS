@@ -1,6 +1,20 @@
+function getStat(statName){
+    const label=[...document.querySelectorAll("div")].find(div=>div.textContent.trim()===statName);
+    if(!label)return null;
+    const Details=label.parentElement.lastElementChild.innerText.split("\n");
+    return `${Details[0]} ${Details[1]}`;
+}
+const storage =new PatternPilotStorage();
+
+
+
+
 console.log("PATTERN PILOT VERSION 29 JULY");
 let purl=window.location.href;
 let waitingForSubmission=false;
+let psid=0;
+
+
 
 const observer = new MutationObserver(function(mutations){
         const currentUrl=window.location.href;
@@ -10,6 +24,7 @@ const observer = new MutationObserver(function(mutations){
             console.log("URL Changed:", currentUrl);
 
             if(currentUrl.includes("/submissions/")){
+
                 waitingForSubmission=true;
             }
 
@@ -18,8 +33,29 @@ const observer = new MutationObserver(function(mutations){
         }
         if(waitingForSubmission){
                         const submissionStatus=document.querySelector("[data-e2e-locator=submission-result]");
-                        if(submissionStatus){
+                        const runtime =getStat("Runtime");
+                        const memory=getStat("Memory");
+
+                        if(submissionStatus && runtime && memory && runtime !== "0 ms" && memory !== "0 MB"){
+                        const parts=window.location.href.split('/');
+                        parts.pop();
+                        const sid=parts.pop()
+                        parts.pop();
+
+                        const keyurl=parts.join('/')+"/description/";
+                        let p;
+                         storage.getProblem(keyurl,function(problem){
+
+
+                             Problem.createSubmission(sid,  submissionStatus.innerText , runtime,memory,new Date(), "JavaScript");
+                             storage.saveProblem(keyurl, p);
+                         });
+
+
+
                             console.log("Submission Status:", submissionStatus.innerText);
+
+
                             waitingForSubmission=false;
                         }
 
@@ -30,7 +66,7 @@ const observer = new MutationObserver(function(mutations){
 if(window.location.href.includes("/problems/")){
 
     console.log("Problem Page Detected");
-    const storage =new PatternPilotStorage();
+
 
     const title=document.querySelector("div.text-title-large");
 

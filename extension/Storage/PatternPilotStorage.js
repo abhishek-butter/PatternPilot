@@ -10,7 +10,8 @@ class PatternPilotStorage {
             chrome.storage.local.get(url,function(result){
                 const problem=result[url];
 
-                callback(problem);
+
+                callback(Problem.fromJson(problem));
 
             });
 

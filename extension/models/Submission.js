@@ -1,9 +1,13 @@
 class Submission {
 
-    constructor(date, language, verdict) {
+    constructor(sid,verdict,runtime,memory,date,language) {
+        this.sid = sid;
+        this.verdict = verdict;
+        this.runtime = runtime;
+        this.memory = memory;
         this.date = date;
         this.language = language;
-        this.verdict = verdict;
+
     }
     getDate(){
         return this.date;
@@ -13,5 +17,26 @@ class Submission {
     }
     getVerdict(){
         return this.verdict;
+    }
+    getSid(){
+        return this.sid;
+    }
+    getRuntime(){
+        return this.runtime;
+    }
+    getMemory(){
+        return this.memory;
+    }
+    static fromJson(rawSubmission){
+        const s=new Submission(
+        rawSubmission.sid,
+        rawSubmission.verdict,
+        rawSubmission.runtime,
+        rawSubmission.memory,
+        rawSubmission.date,
+        rawSubmission.language,
+        );
+        return s;
+
     }
 }
