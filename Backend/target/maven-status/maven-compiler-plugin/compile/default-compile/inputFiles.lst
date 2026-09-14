@@ -1,0 +1,10 @@
+C:\ProjectsFR\PatternPilot\Backend\src\main\java\com\PatternPilot\Constants.java
+C:\ProjectsFR\PatternPilot\Backend\src\main\java\com\PatternPilot\Domain\User.java
+C:\ProjectsFR\PatternPilot\Backend\src\main\java\com\PatternPilot\Exceptions\PPAuthException.java
+C:\ProjectsFR\PatternPilot\Backend\src\main\java\com\PatternPilot\Filter\AuthFilter.java
+C:\ProjectsFR\PatternPilot\Backend\src\main\java\com\PatternPilot\PatternPilotApplication.java
+C:\ProjectsFR\PatternPilot\Backend\src\main\java\com\PatternPilot\Repository\UserRepository.java
+C:\ProjectsFR\PatternPilot\Backend\src\main\java\com\PatternPilot\Repository\UserRepositoryImp.java
+C:\ProjectsFR\PatternPilot\Backend\src\main\java\com\PatternPilot\Resource\UserResource.java
+C:\ProjectsFR\PatternPilot\Backend\src\main\java\com\PatternPilot\Service\UserService.java
+C:\ProjectsFR\PatternPilot\Backend\src\main\java\com\PatternPilot\Service\UserServiceImp.java
