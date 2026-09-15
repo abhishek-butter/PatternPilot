@@ -104,10 +104,6 @@ public class UserRepositoryImp implements UserRepository {
                         rs.getString("email"),
 
                         rs.getString("password")
-
-
-
-
                 );
     });
 }
