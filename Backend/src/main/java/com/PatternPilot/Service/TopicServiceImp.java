@@ -3,24 +3,31 @@ package com.PatternPilot.Service;
 import com.PatternPilot.Domain.Topic;
 import com.PatternPilot.Repository.TopicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 /**
 @author Abhishek V S
-**/public class TopicServiceImp implements TopicService{
+
+**/
+@Service
+@Transactional
+public class TopicServiceImp implements TopicService{
 
     @Autowired
     TopicRepository topicRepository;
 
 
     @Override
-    public Integer addTopic(Integer userId, String topicName, Double confidenceScore) {
-        return topicRepository.create(userId, topicName, confidenceScore);
+    public Topic addTopic(Integer userId, String topicName, Double confidenceScore) {
+        Integer topicId=topicRepository.create(userId, topicName, confidenceScore);
+        return topicRepository.findById(topicId,userId);
     }
 
     @Override
-    public Topic findTopic(Integer topicId, Integer userId) {
+    public Topic findTopicById(Integer topicId, Integer userId) {
         return topicRepository.findById(topicId, userId);
     }
 
@@ -30,7 +37,7 @@ import java.util.List;
     }
 
     @Override
-    public Topic findTopic(Integer userId, String name) {
+    public Topic findTopicByName(Integer userId, String name) {
        return topicRepository.findByName(userId, name);
     }
 

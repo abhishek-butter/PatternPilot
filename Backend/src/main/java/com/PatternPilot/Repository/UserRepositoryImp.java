@@ -66,6 +66,7 @@ public class UserRepositoryImp implements UserRepository {
 
         }
         catch (Exception e){
+            e.printStackTrace();
             throw new PPAuthException("Invalid email/password");
         }
 

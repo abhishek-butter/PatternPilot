@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 import java.sql.PreparedStatement;
 import java.sql.Statement;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Abhishek V S
@@ -34,7 +35,7 @@ public class TopicRepositoryImp implements TopicRepository{
 
 
     @Override
-    public int create(Integer userId, String topicName, Double confidenceScore) {
+    public Integer create(Integer userId, String topicName, Double confidenceScore) {
         try{
             KeyHolder key=new GeneratedKeyHolder();
             jdbcTemplate.update(connection->{
@@ -44,10 +45,15 @@ public class TopicRepositoryImp implements TopicRepository{
                 ps.setDouble(3,confidenceScore);
                 return ps;
             },key);
-            return ((Number)key.getKeys().get("topicid")).intValue();
+            Map<String, Object> keys = key.getKeys();
+            if (keys == null || keys.get("topicid") == null) {
+                throw new PPBadRequestException("Topic creation failed, no ID returned.");
+            }
+            return ((Number) keys.get("topicid")).intValue();
 
         }
         catch (Exception e){
+            e.printStackTrace();
             throw new PPBadRequestException("Invalid Data!");
         }
     }
@@ -59,6 +65,7 @@ public class TopicRepositoryImp implements TopicRepository{
 
         }
         catch (Exception e){
+            e.printStackTrace();
             throw new PPResourceNotFound("Invalid Id's");
         }
     }
@@ -69,6 +76,7 @@ public class TopicRepositoryImp implements TopicRepository{
             return jdbcTemplate.query(SQL_FIND_ALL,topicRowMapper,userId);
         }
         catch (Exception e){
+            e.printStackTrace();
             throw  new PPResourceNotFound("Invalid userId");
         }
     }
@@ -80,6 +88,7 @@ public class TopicRepositoryImp implements TopicRepository{
 
         }
         catch (Exception e){
+            e.printStackTrace();
             throw new PPResourceNotFound("Invalid Name");
         }
 
