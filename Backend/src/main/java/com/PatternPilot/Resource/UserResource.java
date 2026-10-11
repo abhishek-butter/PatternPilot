@@ -1,11 +1,13 @@
 package com.PatternPilot.Resource;
 
 import com.PatternPilot.Constants;
+import com.PatternPilot.DTO.LoginRequest;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import com.PatternPilot.Domain.User;
 import com.PatternPilot.Exceptions.PPAuthException;
 import com.PatternPilot.Service.UserServiceImp;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,19 +32,15 @@ public class UserResource {
 
 
     @PostMapping("/login")
-    public ResponseEntity<Map<String,String>> login(@RequestBody Map<String,Object> userMap ) {
+    public ResponseEntity<Map<String,String>> login(@Valid @RequestBody LoginRequest request) {
         try {
-            if (userMap == null || userMap.get("email") == null || userMap.get("password") == null) {
-                Map<String, String> error = new HashMap<>();
-                error.put("error", "Email and password are required");
-                return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);
-            }
-            
-            String email=(String) userMap.get("email");
-            String password=(String) userMap.get("password");
+
+            String email=request.getEmail();
+            String password=request.getPasssword();
             User user=userService.validateUser(email,password);
 
             return new ResponseEntity<>(generateJWTTokens(user), HttpStatus.OK);
+
         } catch (PPAuthException e) {
             Map<String, String> error = new HashMap<>();
             error.put("error", e.getMessage());

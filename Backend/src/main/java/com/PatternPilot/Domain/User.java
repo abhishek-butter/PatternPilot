@@ -4,10 +4,13 @@ package com.PatternPilot.Domain;
  * @author Abhishek V S
  **/
 public class User {
+
     Integer userId;
     String username;
     String email;
     String password;
+    
+
 
     /** @Unfinished - Constructor body is empty. Fields are not initialized. */
     public User(int userId, String username,String email, String password) {
