@@ -14,14 +14,14 @@ public class LoginRequest {
     private String email;
 
     @NotBlank(message="password is required")
-    private String passsword;
+    private String password;
 
-    public String getPasssword() {
-        return passsword;
+    public String getPassword() {
+        return password;
     }
 
-    public void setPasssword(String passsword) {
-        this.passsword = passsword;
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEmail() {

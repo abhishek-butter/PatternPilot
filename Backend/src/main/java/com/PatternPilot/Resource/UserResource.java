@@ -36,7 +36,7 @@ public class UserResource {
         try {
 
             String email=request.getEmail();
-            String password=request.getPasssword();
+            String password=request.getPassword();
             User user=userService.validateUser(email,password);
 
             return new ResponseEntity<>(generateJWTTokens(user), HttpStatus.OK);
@@ -46,6 +46,7 @@ public class UserResource {
             error.put("error", e.getMessage());
             return new ResponseEntity<>(error, HttpStatus.UNAUTHORIZED);
         } catch (Exception e) {
+            e.printStackTrace();
             Map<String, String> error = new HashMap<>();
             error.put("error", "Internal server error");
             return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);
@@ -67,10 +68,12 @@ public class UserResource {
             User user=userService.registerUser(username,email,password);
             return new ResponseEntity<>(generateJWTTokens(user),HttpStatus.CREATED);
         } catch (PPAuthException e) {
+            e.printStackTrace();
             Map<String, String> error = new HashMap<>();
             error.put("error", e.getMessage());
             return new ResponseEntity<>(error, HttpStatus.CONFLICT);
         } catch (Exception e) {
+            e.printStackTrace();
             Map<String, String> error = new HashMap<>();
             error.put("error", "Internal server error");
             return new ResponseEntity<>(error, HttpStatus.INTERNAL_SERVER_ERROR);

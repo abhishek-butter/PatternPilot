@@ -16,7 +16,7 @@ import java.util.Map;
  * @author Abhishek V S
  **/
 @RestController
-@RequestMapping("/topic")
+@RequestMapping("/topics")
 public class TopicResource {
 
     @Autowired

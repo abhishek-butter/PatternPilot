@@ -32,7 +32,7 @@ public class PatternPilotApplication {
 
         registrationBean.setFilter(authFilter);
 
-        registrationBean.addUrlPatterns("/topic/*");
+        registrationBean.addUrlPatterns("/topics","/topics/*");
 
         return registrationBean;
 
